@@ -9,6 +9,24 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Posts</a></li>
+        <% if current_user %>
+          <li><%= link_to 'Show Profile' , user_path(current_user) , method: :get%></li>
+          <li><%= link_to 'Logout' , destroy_user_session_path , method: :delete%></li>
+        <% else %>
+          <li><%= link_to 'Sign in' , user_session_path%></li>
+          <li><%= link_to 'Sign up' , new_user_registration_path %></li>
+
+        <% end %>
+      </ul>
+    </div>
+  </nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 

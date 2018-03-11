@@ -15,10 +15,15 @@
         <a class="navbar-brand" href="/">WebSiteName</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="/">Posts</a></li>
+        <li><a href="/">Home</a></li>
         <% if current_user %>
-          <li><%= link_to 'Show Profile' , user_path(current_user) , method: :get%></li>
-          <li><%= link_to 'Logout' , destroy_user_session_path , method: :delete%></li>
+          <li><%= link_to 'Friends' , user_path(current_user) , method: :get%></li>
+          <li><%= link_to 'Groups' , groups_path(current_user) , method: :get%></li>
+          <li><%= link_to 'Orders' , orders_path(current_user) , method: :get%></li>
+          <div class="nav navbar-nav">
+            <li><%= link_to current_user.username , user_path(current_user) , method: :get%></li>
+            <li><%= link_to 'Logout' , destroy_user_session_path , method: :delete%></li>
+          </div>
         <% else %>
           <li><%= link_to 'Sign in' , user_session_path%></li>
           <li><%= link_to 'Sign up' , new_user_registration_path %></li>

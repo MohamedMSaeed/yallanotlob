@@ -30,6 +30,47 @@
     <li><%=h user.username %></li>
   <% end %>
 </ul>
+<h2>groups</h2>
+<ul>
+ <br>
+<%= link_to "show group", groups_path %>
+  <br>    
+  
+<div class="col-md-12">
+  <%= form_for @group, remote: true, :html => { class: 'form-horizontal', role: 'form' } do |f| %>
+    <% if @group.errors.any? %>
+      <div class="panel panel-danger col-md-offset-1">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <%= pluralize(@group.errors.count,"error") %>
+            prohibited this group from being created
+          </h2>
+          <div class="panel-body">
+            <ul>
+              <% @group.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <div class="control-label col-md-2">
+        <%= f.label :body, "New group" %>
+      </div>
+      <div class="col-md-10">
+        <%= f.text_field :name, rows: 10, class: 'form-control', placeholder: 'group name' %>
+<%= f.hidden_field :user_id, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <%= f.submit "Add group", class: 'btn btn-primary btn-lg pull-right' %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

@@ -1,9 +1,9 @@
 class GroupMembersController < ApplicationController
-  # skip_before_action :verify_authenticity_token
 
   def create
-    @group = Group.find(params[:group_id])
-    @group_member = @group.group_members.build(:user_id => params[:user_id],:group_id => params[:group_id] )
+     @group = Group.find(params[:group_id])
+ @group_member = @group.group_members.build(:user_id => params[:user_id],:group_id => params[:group_id] )
+
     if @group_member.save
       flash[:notice] = "Added friend."
       redirect_to root_url
@@ -11,8 +11,9 @@ class GroupMembersController < ApplicationController
       flash[:error] = "Unable to add friend."
       redirect_to root_url
 
-    end
-  end
+end
+end
+
 
   def destroy
     @group_member.destroy

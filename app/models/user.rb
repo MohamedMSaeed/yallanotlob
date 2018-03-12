@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :orders, dependent: :destroy
   has_many :groups, dependent: :destroy
-has_many :group_members, dependent: :destroy
+
+ has_many :group_members, dependent: :destroy
+
   has_many :friendships
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"

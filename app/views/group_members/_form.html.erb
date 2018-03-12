@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user %>
-    <%= form.hidden_field :user_id, id: :user_id %>
+    <%= form.label :group %>
+    <%= form.text_field :group_id, id: :group_member_group_id %>
   </div>
 
   <div class="field">
-    <%= form.label :group %>
-    <%= form.hidden_field :group_id, id: :group_id %>
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :group_member_user_id %>
   </div>
 
   <div class="actions">

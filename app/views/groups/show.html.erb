@@ -4,7 +4,22 @@
   <strong>Name:</strong>
   <%= @group.name %>
 </p>
-
+<p>
+ <ul>
+<% if @group.user.friendships.any? %>
+  <% for friendship in @group.user.friendships %>
+    <li>
+      <%=h friendship.friend.username %>
+    </li>
+<li>
+      <%= button_to "Add group member", new_group_member_path(:user_id=>friendship.friend,:group_id=>@group) %>
+</li>
+  <% end %>
+<% else %>
+<p>no friends added to this group</p>
+<% end %>
+</ul>
+</p>
 <p>
   <strong>User:</strong>
   <%= @group.user %>

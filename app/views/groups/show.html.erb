@@ -10,11 +10,10 @@
   <% for friendship in @group.user.friendships %>
     <li>
       <%=h friendship.friend.username %>
-    </li>
-<li>
-      <%= button_to "Add group member", new_group_member_path(:group_member,:group_id=>@group.id,:user_id=>friendship.friend.id),method: :post %>
-</li>
-   <% end %>
+      <%= link_to "Add as a group member", group_members_path(:user_id => friendship.friend ,:group_id => @group), :method => :post %>
+   </li>
+  <% end %>
+
 <% else %>
 <p>no friends added to this group</p>
 <% end %>

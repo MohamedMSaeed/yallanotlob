@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<p>Image: </p>
+<p>
+  <%= image_tag(@user.image.thumb.url, alt: 'Image') if @user.image? %>
+</p>
+
 <p>
   <strong>Username:</strong>
   <%= @user.username %>

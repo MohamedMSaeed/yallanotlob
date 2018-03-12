@@ -8,12 +8,19 @@
         <li><%= message %></li>
       <% end %>
       </ul>
+      
     </div>
   <% end %>
 
   <div class="field">
     <%= form.label :username %>
     <%= form.text_field :username, id: :user_username %>
+  </div>
+
+  <div>
+  <p>Choose new image: </p>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="actions">

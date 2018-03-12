@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311160235) do
+ActiveRecord::Schema.define(version: 20180311160236) do
 
   create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20180311160235) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id"
+  end
+
+  create_table "group_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_members_on_group_id"
+    t.index ["user_id"], name: "index_group_members_on_user_id"
   end
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -58,6 +67,8 @@ ActiveRecord::Schema.define(version: 20180311160235) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "group_members", "groups"
+  add_foreign_key "group_members", "users"
   add_foreign_key "groups", "users"
   add_foreign_key "orders", "users"
 end

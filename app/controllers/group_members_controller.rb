@@ -1,4 +1,5 @@
 class GroupMembersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_group_member, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -16,6 +17,7 @@ class GroupMembersController < ApplicationController
 
  def add_friend
    @group_member = GroupMember.new
+   @group_member = GroupMember.new(group_member_params)
 
     respond_to do |format|
       if @group_member.save
@@ -40,7 +42,7 @@ class GroupMembersController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group_member = GroupMember.new
+    @group_member = GroupMember.new(group_member_params)
 
     respond_to do |format|
       if @group_member.save

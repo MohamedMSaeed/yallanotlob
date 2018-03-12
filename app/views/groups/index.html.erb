@@ -7,6 +7,7 @@
     <tr>
       <th>Name</th>
       <th>User</th>
+      <th>GID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,10 +15,11 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= group.name %></td>
-        <td><%= group.user %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+        <td><%= group.name %> &nbsp;&nbsp;&nbsp; </td>
+        <td><%= group.user.username %>&nbsp;&nbsp;&nbsp;</td>
+        <td><%= group.id %>&nbsp;&nbsp;&nbsp;</td>
+        <td><%= link_to 'Show', group %>&nbsp;&nbsp;&nbsp;</td>
+        <td><%= link_to 'Edit', edit_group_path(group) %>&nbsp;&nbsp;&nbsp;</td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

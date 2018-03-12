@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :orders
   resources :groups
-resources :group_members
+  resources :group_members
       post "group_members/:id", to: "group_members#add_friend" #=> domain.com/admin/users/:user_id/hall/:id
   resources :users
   root to: "users#index"

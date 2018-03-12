@@ -8,8 +8,8 @@
 
 
 <p>
-  <strong>User:</strong>
-  <%= @group_member.user %>
+  <strong>Created By: </strong>
+  <%= @group_member.user.username %>
 </p>
 
 <%= link_to 'Edit', edit_group_member_path(@group_member) %> |

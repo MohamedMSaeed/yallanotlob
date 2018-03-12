@@ -4,9 +4,9 @@
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
 
       <ul>
-      <% group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -17,7 +17,7 @@
   </div>
 
   <!--<div class="field">-->
-    <% form.hidden_field :user_id, id: :group_user_id , value: :group_user.id%>
+  <% form.hidden_field :user_id, id: :user_id , value: :user_id%>
   <!--</div>-->
 
   <div class="actions">

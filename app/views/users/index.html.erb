@@ -2,7 +2,9 @@
 
 <h1>Users</h1>
 
-<table>
+<table >
+  <col width="130">
+  <col width="180">
   <thead>
     <tr>
       <th>Username</th>
@@ -11,10 +13,12 @@
   </thead>
 
   <tbody>
+  <col width="180">
     <% @users.each do |user| %>
       <tr>
         <td><%= image_tag(user.image.thumb.url, alt: 'Image') if user.image? %></td>
         <td><%= user.username %></td>
+        <td><%= user.id %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

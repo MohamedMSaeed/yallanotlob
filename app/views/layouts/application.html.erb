@@ -16,20 +16,27 @@
       </div>
       <ul class="nav navbar-nav">
         <li><a href="/">Home</a></li>
+      </ul>
+
         <% if current_user %>
+        <ul class="nav navbar-nav">
           <li><%= link_to 'Friends' , user_path(current_user) , method: :get%></li>
           <li><%= link_to 'Groups' , groups_path(current_user) , method: :get%></li>
           <li><%= link_to 'Orders' , orders_path(current_user) , method: :get%></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           <div class="nav navbar-nav">
             <li><%= link_to current_user.username , user_path(current_user) , method: :get%></li>
             <li><%= link_to 'Logout' , destroy_user_session_path , method: :delete%></li>
           </div>
+        </ul>
         <% else %>
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to 'Sign in' , user_session_path%></li>
           <li><%= link_to 'Sign up' , new_user_registration_path %></li>
-
+        </ul>
         <% end %>
-      </ul>
+
     </div>
   </nav>
   <p class="notice"><%= notice %></p>

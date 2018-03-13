@@ -1,9 +1,11 @@
 class GroupMembersController < ApplicationController
 
   def destroy
+# @group = Group.find(params[:group_id])
+ @group_member = GroupMember.find(params[:id])
     @group_member.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group member was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Group member was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -24,3 +26,4 @@ end
 
 
 end
+

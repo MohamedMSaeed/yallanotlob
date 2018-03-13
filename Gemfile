@@ -12,7 +12,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
-
+gem 'font-awesome-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'

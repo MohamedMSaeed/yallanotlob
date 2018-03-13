@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
   </head>
 
   <body>
@@ -22,15 +23,15 @@
         <% if current_user %>
         <ul class="nav navbar-nav">
           <li><%= link_to  user_path(current_user) , method: :get do %>
-              <i class="glyphicon glyphicon-user"></i> Friends
+              <i class="fa fa-list-alt"></i> Friends
             <% end %>
           </li>
           <li><%= link_to  groups_path(current_user) , method: :get do %>
-              <i class="fas fa-users"></i> Groups
+              <i class="fa fa-users"></i> Groups
             <% end %>
           </li>
           <li><%= link_to  orders_path(current_user) , method: :get do %>
-              <i class="glyphicon glyphicon-user"></i> Orders
+              <i class="fa fa-list-alt"></i> Orders
             <% end %>
           </li>
         </ul>

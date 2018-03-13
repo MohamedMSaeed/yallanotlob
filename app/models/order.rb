@@ -14,4 +14,7 @@ class Order < ApplicationRecord
   def set_defaults
     self.status ||= "w"
   end
+
+  has_many :invited_to_orders, dependent: :destroy
+  has_many :order_details, dependent: :destroy
 end

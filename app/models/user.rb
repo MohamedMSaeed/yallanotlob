@@ -14,5 +14,7 @@ class User < ApplicationRecord
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   mount_uploader :image, ImageUploader
+  has_many :invited_to_orders, dependent: :destroy
+  has_many :order_details, dependent: :destroy
 
 end

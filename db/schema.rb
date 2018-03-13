@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311160236) do
+ActiveRecord::Schema.define(version: 20180313075219) do
 
   create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
@@ -37,14 +37,37 @@ ActiveRecord::Schema.define(version: 20180311160236) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
+  create_table "invited_to_orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "order_id"
+    t.bigint "user_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_invited_to_orders_on_order_id"
+    t.index ["user_id"], name: "index_invited_to_orders_on_user_id"
+  end
+
+  create_table "order_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "order_id"
+    t.bigint "user_id"
+    t.string "item"
+    t.integer "amount"
+    t.integer "price"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["user_id"], name: "index_order_details_on_user_id"
+  end
+
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "type"
     t.string "resturant"
     t.string "image"
     t.string "status"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "meal"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -70,5 +93,9 @@ ActiveRecord::Schema.define(version: 20180311160236) do
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
   add_foreign_key "groups", "users"
+  add_foreign_key "invited_to_orders", "orders"
+  add_foreign_key "invited_to_orders", "users"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "order_details", "users"
   add_foreign_key "orders", "users"
 end

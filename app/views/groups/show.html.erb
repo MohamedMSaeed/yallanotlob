@@ -15,11 +15,22 @@
   <% end %>
 
 <% else %>
-<p>no friends added to this group</p>
+<p>you've no friends</p>
 <% end %>
 </ul>
 </p>
+
 <p>
+  <strong>group members:</strong>
+  <% if @group.group_members.any? %>
+  <% for gm in @group.group_members %>
+    <li>
+      <%=h gm.user.username %>
+      <%= link_to "remove from group",group_member_url(gm), :method => :delete, data: { confirm: 'Are you sure?' } %>
+   </li>
+<% end %>
+<% end %>
+</p>
   <strong>User:</strong>
   <%= @group.user %>
 </p>

@@ -34,8 +34,8 @@
 <ul>
  <br>
 <%= link_to "show group", groups_path %>
-  <br>    
-  
+  <br>
+</ul>
 <div class="col-md-12">
   <%= form_for @group, remote: true, :html => { class: 'form-horizontal', role: 'form' } do |f| %>
     <% if @group.errors.any? %>

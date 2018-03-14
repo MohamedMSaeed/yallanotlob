@@ -15,6 +15,11 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @user = current_user
+    @friends = []
+    @user.friendships.each {|friend|
+      @friends << friend.friend_id
+      }
   end
 
   # GET /orders/1/edit

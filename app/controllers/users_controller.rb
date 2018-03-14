@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_user, only: [ :edit, :update, :destroy]
 
   # GET /users
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = current_user
-@group = @user.groups.build
+    @group = @user.groups.build
     @groups = @user.groups
   end
 
@@ -63,6 +63,12 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def home
+    @user = current_user
+    @group = @user.groups.build
+    @groups = @user.groups
   end
 
   private

@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :type, id: :order_type %>
+    <%= form.label :Meal %>
+    <%= form.text_field :meal, id: :order_meal %>
   </div>
 
   <div class="field">
@@ -22,14 +22,17 @@
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :order_status %>
+    <%= form.hidden_field :status, id: :order_status, value: :'waiting' %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :order_user_id %>
+    <%= form.label :friends %>
+    <%= form.text_field :friends, id: :order_friends %>
   </div>
+
+  <!--<div class="field">-->
+    <%= form.hidden_field :user_id, id: :user_id %>
+  <!--</div>-->
 
   <div class="actions">
     <%= form.submit %>

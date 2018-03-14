@@ -4,66 +4,80 @@
     <title>Yallanotlob</title>
     <%= csrf_meta_tags %>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
   </head>
 
   <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">WebSiteName</a>
-      </div>
+  <!-- Background Image -->
+  <!--<div class="bg-img home">-->
+    <!--<div class="overlay"></div>-->
+  <!--</div>-->
+  <!-- /Background Image -->
+
+  <!--  Main navigation  -->
+  <!--<div style="color: #0b0b0b">-->
+  <nav id="nav" class="navbar nav-transparent">
+    <div class="container">
+    <ul class="main-nav nav navbar-nav navbar-right">
+    </ul>
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">YalaNotlob</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+    </ul>
+    <% if current_user %>
       <ul class="nav navbar-nav">
-        <li><a href="/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-
+        <li><%= link_to  user_path(current_user) , method: :get do %>
+            <i class="fa fa-list-alt"></i> Friends
+          <% end %>
+        </li>
+        <li><%= link_to  groups_path(current_user) , method: :get do %>
+            <i class="fa fa-users"></i> Groups
+          <% end %>
+        </li>
+        <li><%= link_to  orders_path(current_user) , method: :get do %>
+            <i class="fa fa-list-alt"></i> Orders
+          <% end %>
+        </li>
       </ul>
-
-        <% if current_user %>
-        <ul class="nav navbar-nav">
-          <li><%= link_to  user_path(current_user) , method: :get do %>
-              <i class="fa fa-list-alt"></i> Friends
+      <ul class="nav navbar-nav navbar-right">
+        <div class="nav navbar-nav">
+          <li><%= link_to  user_path(current_user) , method: :get do%>
+              <i class="glyphicon glyphicon-user"></i> <%= current_user.username  %>
             <% end %>
           </li>
-          <li><%= link_to  groups_path(current_user) , method: :get do %>
-              <i class="fa fa-users"></i> Groups
+          <li><%= link_to  destroy_user_session_path , method: :delete do%>
+              <i class="glyphicon glyphicon-log-in"></i> Logout
             <% end %>
           </li>
-          <li><%= link_to  orders_path(current_user) , method: :get do %>
-              <i class="fa fa-list-alt"></i> Orders
-            <% end %>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <div class="nav navbar-nav">
-            <li><%= link_to  user_path(current_user) , method: :get do%>
-                <i class="glyphicon glyphicon-user"></i> <%= current_user.username  %>
-            <% end %>
-            </li>
-            <li><%= link_to  destroy_user_session_path , method: :delete do%>
-                <i class="glyphicon glyphicon-log-in"></i> Logout
-              <% end %>
-            </li>
-          </div>
-        </ul>
-        <% else %>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to  user_session_path do %>
-              <i class="glyphicon glyphicon-log-in"></i> Sign in
-            <% end %>
-          </li>
-          <li><%= link_to  new_user_registration_path do %>
-              <i class="glyphicon glyphicon-user"></i> Sign up
-            <% end %>
-          </li>
-        </ul>
-        <% end %>
-
+        </div>
+      </ul>
+    <% end %>
     </div>
   </nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <!--</div>-->
+  <!-- /Main navigation -->
+
+
+  <!--My nav-->
+  <!--<nav class="navbar navbar-default">-->
+    <!--<div class="container-fluid">-->
+
+    <!--</div>-->
+  <!--</nav>-->
+  <!--My nav-->
 
   <%= yield %>
 

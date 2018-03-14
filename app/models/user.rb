@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :groups, dependent: :destroy
 
- has_many :group_members, dependent: :destroy
+  has_many :group_members, dependent: :destroy
 
   has_many :friendships
   has_many :friends, :through => :friendships

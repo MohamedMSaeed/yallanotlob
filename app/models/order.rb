@@ -1,10 +1,10 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :users 
+  # has_and_belongs_to_many :users
 
   
 
-  validates :type, presence: true
+  validates :meal, presence: true
   validates :resturant, presence: true
 
   after_initialize :set_defaults

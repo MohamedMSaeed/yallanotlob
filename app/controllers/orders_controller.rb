@@ -31,8 +31,14 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
+    friendsList = @@friendsList
+    puts(friendsList)
     respond_to do |format|
       if @order.save
+        friendsList.each do |f|
+          @invited = InvitedToOrder.new(order_id: @order.id, user_id: f )
+          @invited.save
+        end
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -64,6 +70,10 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def putList
+    @@friendsList = params[:friends]
   end
 
   private

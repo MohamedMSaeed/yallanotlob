@@ -24,6 +24,11 @@
       </div>
 
       <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image, id: :order_image %>
+      </div>
+
+      <div class="field">
         <%= form.hidden_field :status, id: :order_status, value: :'waiting' %>
       </div>
 
@@ -31,6 +36,12 @@
         <%= form.label :friends %>
         <%= form.text_field :friends, id: :order_friends %>
         <button type="button" onclick="addToInvite()">Add To Invite</button>
+      </div>
+
+      <div class="field">
+        <%= form.label :group %>
+        <%= form.text_field :group, id: :order_group %>
+        <button type="button" onclick="addGroupToInvite()">Add To Invite</button>
       </div>
 
       <!--<div class="field">-->

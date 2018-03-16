@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   post "invited_to_orders/invite", to: "invited_to_orders#invite"
   post "friendships/add_friend", to: "friendships#add_friend"
 
+  post "/orders/putList", to: "orders#putList"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

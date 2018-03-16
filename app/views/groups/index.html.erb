@@ -15,7 +15,7 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= group.name %> &nbsp;&nbsp;&nbsp; </td>
+        <td><p onclick ="displayGpMember(this)" class='grpName' gid="<%= group.id %>"><%= group.name %><p> &nbsp;&nbsp;&nbsp; </td>
         <td><%= group.user.username %>&nbsp;&nbsp;&nbsp;</td>
         <td><%= group.id %>&nbsp;&nbsp;&nbsp;</td>
         <td><%= link_to 'Show', group %>&nbsp;&nbsp;&nbsp;</td>
@@ -26,6 +26,17 @@
   </tbody>
 </table>
 
+<div >
+  <table>
+    <tbody>
+     <tr id="group">
+      <!-- h3mel append ll group members -->
+      </tr>
+    </tbody>
+  </table>
+</div>
 <br>
 
 <%= link_to 'New Group', new_group_path %>
+
+

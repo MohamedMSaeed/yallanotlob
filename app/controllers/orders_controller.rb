@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.where(user_id: current_user.id).order("created_at DESC")
   end
 
   # GET /orders/1
@@ -31,9 +31,18 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
+    friendsList = @@friendsList
+    puts(friendsList)
     respond_to do |format|
       if @order.save
+
 	ActionCable.server.broadcast "order_#{current_user.id}_channel" , {hi:"hello"}
+
+        friendsList.each do |f|
+          @invited = InvitedToOrder.new(order_id: @order.id, user_id: f, status: "invited" )
+          @invited.save
+        end
+
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -65,6 +74,10 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def putList
+    @@friendsList = params[:friends]
   end
 
   private

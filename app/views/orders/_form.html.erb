@@ -24,6 +24,11 @@
       </div>
 
       <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image, id: :order_image %>
+      </div>
+
+      <div class="field">
         <%= form.hidden_field :status, id: :order_status, value: :'waiting' %>
       </div>
 
@@ -33,27 +38,25 @@
         <button type="button" onclick="addToInvite()">Add To Invite</button>
       </div>
 
+      <div class="field">
+        <%= form.label :group %>
+        <%= form.text_field :group, id: :order_group %>
+        <button type="button" onclick="addGroupToInvite()">Add To Invite</button>
+      </div>
+
       <!--<div class="field">-->
         <%= form.hidden_field :user_id, id: :user_id %>
+         <!--form.hidden_field :friendsList, id: :friendsList %>-->
       <!--</div>-->
 
       <div class="actions">
-        <%= form.submit %>
+        <!--<button type="submit">do it</button>-->
+        <%= form.submit id: "createOrder"%>
       </div>
     <% end %>
   </div>
 
-  <h2>Friends</h2>
-  <ul>
-    <% for friendship in @user.friendships %>
-      <li>
-        <%=h friendship.friend.username %>
-        (<%= link_to "remove", friendship, :method => :delete %>)
-      </li>
-    <% end %>
 
-    <%= @friends %>
-  </ul>
 
   <div class="col-md-4" style="border: solid black; height: 350px" id="invited_to_order">
     <h4 style="padding-top: 10px">Invited Friends</h4>

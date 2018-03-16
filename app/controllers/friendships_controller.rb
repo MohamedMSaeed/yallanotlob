@@ -14,6 +14,26 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
     flash[:notice] = "Removed friendship."
-    redirect_to current_user
+    # redirect_to friendships_path
+
+     # respond_to do |format|
+     #          format.json { render json: { 'id': @friendship.friend_id ,'img': @friendship.friend.image ,'name': @friendship.friend.username} }
+     #      end
     end
+    def index
+         @friendships = current_user.friendships.where( :user_id => current_user.id)
+    end
+
+  def add_friend
+    for user in User.all
+      if params[:friend_email] = user.email 
+         @friendship = current_user.friendships.build(:friend_id => user.id)
+         respond_to do |format|
+            if @friendship.save
+              format.json { render json: { 'id': @friendship.friend_id ,'img': @friendship.friend.image ,'name': @friendship.friend.username} }
+            end
+          end
+      end
+    end
+  end
 end

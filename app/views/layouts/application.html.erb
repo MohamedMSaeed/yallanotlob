@@ -14,9 +14,13 @@
 
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
  
+
+    <%= javascript_include_tag 'application',  'data-turbolinks-track': 'reload' %>
+
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
   </head>
 
@@ -41,7 +45,7 @@
     </ul>
     <% if current_user %>
       <ul class="nav navbar-nav">
-        <li><%= link_to  user_path(current_user) , method: :get do %>
+        <li><%= link_to  friendships_path(current_user) , method: :get do %>
             <i class="fa fa-list-alt"></i> Friends
           <% end %>
         </li>
@@ -85,6 +89,7 @@
   <!--My nav-->
 
   <%= yield %>
-
+  <%= javascript_include_tag "display_groupMember" %>
+  <%= javascript_include_tag "jquery" %>
   </body>
 </html>

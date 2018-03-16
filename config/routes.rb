@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root to: "start#start"
   get "start/home", to: "start#home"
   post "invited_to_orders/invite", to: "invited_to_orders#invite"
+  post "invited_to_orders/inviteGroup", to: "invited_to_orders#inviteGroup"
   post "/orders/putList", to: "orders#putList"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     respond_to do |format|
       if @order.save
+	ActionCable.server.broadcast "order_#{current_user.id}_channel" , {hi:"hello"}
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

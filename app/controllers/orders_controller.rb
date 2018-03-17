@@ -30,16 +30,15 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @user = User.find_by(id: current_user.id)
     @order.user_id = current_user.id
     friendsList = @@friendsList
     puts(friendsList)
     respond_to do |format|
       if @order.save
-
-	ActionCable.server.broadcast "order_#{current_user.id}_channel" , {hi:"hello"}
-
         friendsList.each do |f|
           @invited = InvitedToOrder.new(order_id: @order.id, user_id: f, status: "invited" )
+          ActionCable.server.broadcast "order_#{f}_channel" , {order:@order, createdby:@user}
           @invited.save
         end
 
@@ -78,6 +77,18 @@ class OrdersController < ApplicationController
 
   def putList
     @@friendsList = params[:friends]
+  end
+
+  def finish
+    @finishedOrder = Order.find_by(id: params[:order_id])
+    respond_to do |format|
+      if @finishedOrder.update(status: "finished")
+        format.json { render json: {'status':@finishedOrder.status , 'order_id':@finishedOrder.id}}
+      else
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   private

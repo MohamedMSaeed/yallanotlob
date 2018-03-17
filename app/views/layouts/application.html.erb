@@ -25,11 +25,11 @@
   </head>
 
   <body>
-  <!-- Background Image -->
-  <!--<div class="bg-img home">-->
-    <!--<div class="overlay"></div>-->
-  <!--</div>-->
-  <!-- /Background Image -->
+   <!--Background Image-->
+  <div class="bg-img home">
+    <div class="overlay"></div>
+  </div>
+   <!--/Background Image-->
 
   <!--  Main navigation  -->
   <!--<div style="color: #0b0b0b">-->
@@ -63,6 +63,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <div class="nav navbar-nav">
+          <li>
+              <button class="nav btn-toolbar"><i class="fa fa-bell"></i> notification</button>
+          </li>
           <li><%= link_to  user_path(current_user) , method: :get do%>
               <i class="glyphicon glyphicon-user"></i> <%= current_user.username  %>
             <% end %>

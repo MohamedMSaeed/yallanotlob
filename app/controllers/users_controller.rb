@@ -70,6 +70,9 @@ class UsersController < ApplicationController
     # @group = @user.groups.build
     # @groups = @user.groups
     @orders = Order.where(user_id: @user.id).order("created_at").last(10).reverse
+
+    # Friends Activities
+    @invited = InvitedToOrder.where(user_id: @user.id).order("created_at").last(10).reverse
   end
 
   private

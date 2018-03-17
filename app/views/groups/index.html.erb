@@ -26,15 +26,36 @@
   </tbody>
 </table>
 
-<div >
-  <table>
-    <tbody>
+<div id="display_group">
      <tr id="group">
       <!-- h3mel append ll group members -->
       </tr>
-    </tbody>
-  </table>
 </div>
+
+
+
+<div  id="display_group" >
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <legend style="background-color: white">Friend List</legend>
+      <fieldset style="height: 330px; background-color: white; padding-top: 10px">
+        <div  id="frindlist">
+          <% @friendships.each do |friendship| %>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+              <%= image_tag(friendship.friend.image.thumb.url, alt: 'Image') if friendship.friend.image? %>
+              <%= friendship.friend.username%>
+              <%= link_to 'Unfriend', friendship, method: :delete, :onclick =>'RemoveFriend()'%>
+              <br /><br /><br />
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+
+
 <br>
 
 <%= link_to 'New Group', new_group_path %>

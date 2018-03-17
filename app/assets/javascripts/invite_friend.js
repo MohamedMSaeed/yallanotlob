@@ -7,7 +7,7 @@ function ajaxIt(friend) {
         success: function (response) {
             if(response['friend']){
                 $("#invited_to_order").append('<div><i class="invitedName">'+response['friend'].username+'</i>'
-                    +'<button type="button" onclick="removeFromList(this)" value="'+response['friend'].username+'">remove</button>'
+                    +'<button type="button" onclick="removeFromList(this)" id="'+response['friend'].id+'" value="'+response['friend'].username+'">remove</button>'
                     +'<br></div>')
                 friendsList.push(response['friend'].id)
                 nameList.push(response['friend'].username)
@@ -18,7 +18,6 @@ function ajaxIt(friend) {
             }
         }
     });
-
 }
 
 var friendsList = []
@@ -28,31 +27,13 @@ function addToInvite(){
     if(jQuery.inArray(friend,nameList) !== -1){
         alert("already added!!")
     }else{
-        $.ajax({
-            type: "POST",
-            url: "/invited_to_orders/invite",
-            data: {friendName:friend, authenticity_token:$('meta[name="csrf-token"]').attr("content")},
-            dataType: "json",
-            success: function (response) {
-                if(response['friend']){
-                    $("#invited_to_order").append('<div><i class="invitedName">'+response['friend'].username+'</i>'
-                        +'<button type="button" onclick="removeFromList(this)" value="'+response['friend'].username+'">remove</button>'
-                        +'<br></div>')
-                    friendsList.push(response['friend'].id)
-                    nameList.push(response['friend'].username)
-                }else if(response['NotFriend']){
-                    alert("User is not your friend!!")
-                }else{
-                    alert("User is not found!")
-                }
-            }
-        });
+        ajaxIt(friend)
     }
 }
 
 function removeFromList(){
-    console.log(event.target)
-    friendsList.splice($.inArray(event.target.value, friendsList),1);
+    friendsList.splice($.inArray(parseInt(event.target.id), friendsList),1);
+    nameList.splice($.inArray(event.target.value, nameList),1);
     $(event.target).parent().remove()
 }
 
@@ -67,16 +48,12 @@ function addGroupToInvite() {
         success: function (response) {
             if(response['group']){
                 for (var i in response['group_members']){
-                    console.log(response['group_members'][i])
-                    ajaxIt(response['group_members'][i])
-
+                    if(jQuery.inArray(response['group_members'][i],nameList) !== -1){
+                        alert(response['group_members'][i]+" is already added!!")
+                    }else {
+                        ajaxIt(response['group_members'][i])
+                    }
                 }
-                // $("#invited_to_order").append('<div><i class="invitedName">'+response['friend'].username+'</i>'
-                //     +'<button type="button" onclick="removeFromList(this)" value="'+response['friend'].username+'">remove</button>'
-                //     +'<br></div>')
-                // friendsList.push(response['friend'].id)
-                // nameList.push(response['friend'].username)
-                console.log(response['group_members'])
             }else{
                 alert("Group is not found!")
             }
@@ -93,9 +70,5 @@ $("#createOrder").click(function(){
             friends: friendsList,
             authenticity_token:$('meta[name="csrf-token"]').attr("content")
         },
-        // dataType: "json",
-        // success: function (response) {
-        //     alert(friendsList)
-        // }
     });
 })

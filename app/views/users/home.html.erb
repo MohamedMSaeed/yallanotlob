@@ -9,30 +9,36 @@
 
       <!-- Section header -->
       <div class="section-header text-center">
-        <h2 class="title">Welcome to Website</h2>
+        <h2 class="title">Welcome to YallaNotlob</h2>
       </div>
       <!-- /Section header -->
 
       <!-- about -->
-      <div class="col-md-5" style="border: solid black; height: 350px">
+      <div class="col-md-5" style="border: solid black; height: 350px; overflow-y: scroll">
         <h4 style="padding-top: 10px">Last Orders</h4>
         <hr>
-
+        <ul style="height: 250px; font-size: 15px">
         <% @orders.each do |order| %>
-          <%= link_to order.meal, order_path(order)  %> created at: <%= order.created_at %> <br>
+          <li style="font-size: 15px"><%= link_to order.meal, order_path(order)  %> created at: <%= order.created_at %></li>
         <% end %>
-
+        </ul>
 
 
       </div>
       <!-- /about -->
 
       <!-- about -->
-      <div class="col-md-5" style="border: solid black; height: 350px; float: right">
+      <div class="col-md-5" style="border: solid black; height: 350px; overflow-y: scroll;float: right" id="friends_activities">
         <h4 style="padding-top: 10px">Friends Activities</h4>
         <hr>
 
+        <ul>
 
+        <% @invited.each do |event| %>
+            <li style="font-size: 15px"><%= link_to event.order.user.username, user_path(event.order.user) %> invited you to <%= link_to 'order', order_url(event.order) %> from <%=	 event.order.resturant %><br></li>
+        <%	 end %>
+
+        </ul>
       </div>
       <!-- /about -->
 
@@ -45,3 +51,5 @@
 
 <!--</div>-->
 <!-- /About -->
+
+<%= javascript_include_tag('home.js') %>

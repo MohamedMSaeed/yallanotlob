@@ -25,7 +25,6 @@
   </div>
   </div>
 
-
 <table><tr>
         <td><input type="text" placeholder='item' id="item"></td>
         <td><input type="number" placeholder='amount' id="amount"></td>
@@ -34,6 +33,10 @@
         <td><button onclick="add(this)" class="addOrder" uid="<%= current_user.id %>" oid="<%= params[:id] %>" > Add Order</button></td>
 </tr>
     </table>
+<p>Image: </p>
+<p>
+  <%= image_tag(@order.image.thumb.url, alt: 'Image') if @order.image? %>
+</p>
 
 </div>
 

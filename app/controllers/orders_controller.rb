@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+@user = current_user
+    @order_detail = OrderDetail.new
   end
 
   # GET /orders/new
@@ -36,10 +38,11 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
 
-	ActionCable.server.broadcast "order_#{current_user.id}_channel" , {hi:"hello"}
+	
 
         friendsList.each do |f|
           @invited = InvitedToOrder.new(order_id: @order.id, user_id: f, status: "invited" )
+	  ActionCable.server.broadcast "order_#{f}_channel" , {hi:"hello"}
           @invited.save
         end
 

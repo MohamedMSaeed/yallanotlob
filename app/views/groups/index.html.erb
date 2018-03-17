@@ -29,9 +29,19 @@
 <div >
   <table>
     <tbody>
+     <% @groups.each do |group| %>
+    <tr>
+        <td >
+          <input type="text" id="membername" class='grpName' gid="<%= group.id %>">
+        </td>
+        <td>
+            <button id="add" onclick="addMember(this)" >Add</button>
+        </td>
+      </tr>
      <tr id="group">
       <!-- h3mel append ll group members -->
       </tr>
+       <% end %>
     </tbody>
   </table>
 </div>

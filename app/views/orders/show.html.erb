@@ -10,9 +10,9 @@
   <%= @order.resturant %>
 </p>
 
+<p>Image: </p>
 <p>
-  <strong>Image:</strong>
-  <%= @order.image %>
+  <%= image_tag(@order.image.thumb.url, alt: 'Image') if @order.image? %>
 </p>
 
 <p>

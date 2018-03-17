@@ -35,10 +35,14 @@ class OrdersController < ApplicationController
     puts(friendsList)
     respond_to do |format|
       if @order.save
+
+	ActionCable.server.broadcast "order_#{current_user.id}_channel" , {hi:"hello"}
+
         friendsList.each do |f|
           @invited = InvitedToOrder.new(order_id: @order.id, user_id: f, status: "invited" )
           @invited.save
         end
+
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

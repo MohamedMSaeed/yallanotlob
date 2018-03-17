@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   root to: "start#start"
   get "start/home", to: "start#home"
   post "invited_to_orders/invite", to: "invited_to_orders#invite"
+  mount ActionCable.server => '/cable'
+
+  post "friendships/add_friend", to: "friendships#add_friend"
+  post "invited_to_orders/inviteGroup", to: "invited_to_orders#inviteGroup"
   post "/orders/putList", to: "orders#putList"
   post "/group_members/delete", to: "group_members#delete"
   post "/group_members/add", to: "group_members#add"

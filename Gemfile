@@ -14,7 +14,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
-
+gem 'redis', '~> 3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 # Use mysql as the database for Active Record

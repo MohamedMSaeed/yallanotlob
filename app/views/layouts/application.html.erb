@@ -3,7 +3,7 @@
   <head>
     <title>Yallanotlob</title>
     <%= csrf_meta_tags %>
-
+<%= action_cable_meta_tag %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,13 @@
 
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+ 
+
     <%= javascript_include_tag 'application',  'data-turbolinks-track': 'reload' %>
+
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
   </head>
 
@@ -39,7 +45,7 @@
     </ul>
     <% if current_user %>
       <ul class="nav navbar-nav">
-        <li><%= link_to  user_path(current_user) , method: :get do %>
+        <li><%= link_to  friendships_path(current_user) , method: :get do %>
             <i class="fa fa-list-alt"></i> Friends
           <% end %>
         </li>
@@ -51,6 +57,9 @@
             <i class="fa fa-list-alt"></i> Orders
           <% end %>
         </li>
+<li class="panel-body hidden" id="messages">
+    
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <div class="nav navbar-nav">

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314105447) do
+ActiveRecord::Schema.define(version: 20180316073028) do
+
   create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "friend_id"
@@ -45,17 +46,6 @@ ActiveRecord::Schema.define(version: 20180314105447) do
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_invited_to_orders_on_order_id"
     t.index ["user_id"], name: "index_invited_to_orders_on_user_id"
-  end
-
-  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "recipient_id"
-    t.integer "actor_id"
-    t.datetime "read_at"
-    t.string "action"
-    t.integer "notifiable_id"
-    t.string "notifiable_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "order_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -106,8 +96,6 @@ ActiveRecord::Schema.define(version: 20180314105447) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "image"
-    t.string "provider"
-    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

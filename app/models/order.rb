@@ -9,7 +9,7 @@ class Order < ApplicationRecord
 
   after_initialize :set_defaults
   
-  # mount_uploader :image, ImageUploader
+   mount_uploader :image, ImageUploader
  
   def set_defaults
     self.status ||= "w"

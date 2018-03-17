@@ -1,4 +1,5 @@
 
+
 # MySQL. Versions 5.1.10 and up are supported.
 #
 # Install the MySQL driver
@@ -15,7 +16,9 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: 1391994
+
+  password: 12345
+
   socket: /var/run/mysqld/mysqld.sock
 
 development:

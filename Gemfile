@@ -7,8 +7,10 @@ end
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'omniauth-facebook'
 gem 'devise'
-gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'

@@ -25,3 +25,10 @@ Rails.application.config.assets.precompile += %w( display_groupMember.js )
 Rails.application.config.assets.precompile += %w( jquery.js )
 Rails.application.config.assets.precompile += %w( invite_friend.js )
 Rails.application.config.assets.precompile += %w( orders.js )
+
+Rails.application.config.assets.precompile += %w( channels/orders.js )
+Rails.application.config.assets.precompile += %w( channels/orders.coffee )
+Rails.application.config.assets.precompile += %w( home.js )
+
+Rails.application.config.assets.precompile += %w( addOrder.js )
+

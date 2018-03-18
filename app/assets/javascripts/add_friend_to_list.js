@@ -1,4 +1,3 @@
-// var x;
 
 function addFriendToList(){
     var friend = $("#add_friend").val()
@@ -18,15 +17,12 @@ function addFriendToList(){
              $(".my-link").bind('ajax:success',function(){$(this).parent().remove();  
                 console.log(response.msg)
                    })
-
         } 
     });
 
 };
 
-$(".my-link").bind('ajax:success',function(){$(this).parent().remove();
-                })
-
+$(".my-link").bind('ajax:success',function(){$(this).parent().remove();})
 
 
   

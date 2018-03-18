@@ -4,9 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-  
     @groups = Group.where(user_id: current_user.id)
-
   end
 
   # GET /groups/1
@@ -33,6 +31,20 @@ class GroupsController < ApplicationController
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
+      else
+        format.html { render :new }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def newGroup
+    @group = Group.new(name: params['name'], user_id: current_user.id)
+    @group.user_id = current_user.id
+    respond_to do |format|
+      if @group.save
+        p @group
+        format.json { render json: {group: @group} }
       else
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }

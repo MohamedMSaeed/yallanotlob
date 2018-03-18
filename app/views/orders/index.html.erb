@@ -20,12 +20,12 @@
         <td><%= order.meal %></td>
         <td><%= order.resturant %></td>
         <!--<td><%= order.image %></td>-->
-        <td><%= order.status %></td>
+        <td id= "st<%= order.id %>" ><%= order.status %></td>
         <td><%= order.user.username %></td>
         <td><%= link_to 'Show', order %></td>
-        <td><button onclick="finish_order()">Finish</button></td>
+        <td><button onclick="finish_order(this)" id= <%= order.id %> >Finish</button></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +36,4 @@
 
 <%= link_to 'New Order', new_order_path %>
 
-<%= javascript_include_tag('orders.js') %>
+<%= javascript_include_tag('channels/orders.js') %>

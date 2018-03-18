@@ -1,3 +1,5 @@
+
+
 # MySQL. Versions 5.1.10 and up are supported.
 #
 # Install the MySQL driver
@@ -14,19 +16,21 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  host: localhost
+
+  password: root
+
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: yallanotlop_development
+  database: yallanotlob_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: yallanotlop_test
+  database: yallanotlob_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +53,5 @@ test:
 #
 production:
   <<: *default
-  database: yallanotlop_production
-  username: yallanotlop
-  password: <%= ENV['yallanotlop_DATABASE_PASSWORD'] %>
+  database: yallanotlob_production
+  username: yallanotlob

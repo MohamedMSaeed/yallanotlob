@@ -21,13 +21,14 @@ class FriendshipsController < ApplicationController
          @friendships = current_user.friendships.where( :user_id => current_user.id)
     end
 
+
     def add_friend
       for user in User.all
-        if params[:friend_email] = user.email 
+        if params[:friend_email] == user.email
            @friendship = current_user.friendships.build(:friend_id => user.id)
            respond_to do |format|
               if @friendship.save
-                format.json { render json: { 'id': @friendship.id ,'img': @friendship.friend.image ,'name': @friendship.friend.username} }
+                format.json { render json: { 'id': @friendship.friend_id ,'img': @friendship.friend.image ,'name': @friendship.friend.username} }
               end
             end
         end

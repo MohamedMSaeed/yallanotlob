@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Orders</h1>
-
+<%= link_to 'New Order', new_order_path, class: "btn btn-default" %>
 <table>
   <thead>
     <tr>
@@ -9,7 +9,7 @@
       <th>Resturant</th>
       <!--<th>Image</th>-->
       <th>Status</th>
-      <th>User</th>
+      <!--<th>User</th>-->
       <th colspan="4">Action</th>
     </tr>
   </thead>
@@ -21,7 +21,7 @@
         <td><%= order.resturant %></td>
         <!--<td><%= order.image %></td>-->
         <td id= "st<%= order.id %>" ><%= order.status %></td>
-        <td><%= order.user.username %></td>
+        <!--<td><%= order.user.username %></td>-->
         <td><%= link_to 'Show', order %></td>
         <% if order.status == "waiting" %>
         <td><button onclick="finish_order(this)" id= <%= order.id %> >Finish</button></td>
@@ -33,9 +33,7 @@
   </tbody>
 
 </table>
-<a id="finish_order">Finish</a>
-<br>
 
-<%= link_to 'New Order', new_order_path %>
+
 
 <%= javascript_include_tag('channels/orders.js') %>

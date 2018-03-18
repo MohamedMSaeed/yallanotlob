@@ -7,6 +7,7 @@ function join() {
         dataType: "json",
         success: function (response) {
             if(response['joined']){
+                $("#"+response['iid'][0].id).parent()[0].append('Order')
                 $("#"+response['iid'][0].id).remove()
             }
         }

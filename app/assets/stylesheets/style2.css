@@ -6,7 +6,15 @@
 .home{
     background-image: url("003.jpg")
 }
-
+.bg-img .overlayS {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .9;
+    background: #2E2F30;
+}
 .bg-img .overlay {
     position: absolute;
     left: 0;

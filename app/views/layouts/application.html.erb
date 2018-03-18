@@ -71,7 +71,7 @@
             <button class="dropbtn" style="color:#fff;">Notification</button>
             <ul class="dropdown-content" id="dropdowncontent" style="width: 300px">
               <% @invitations.each do |invite| %>
-                <%= invite.order.user.username %> invited you to his order
+                <%= invite.order.user.username %> invited you to his <%= link_to 'Order', order_path(invite.order) %>
                 <% if invite.status == "invited" %>
                   <button onclick="join(this)" id="<%= invite.id %>">Join</button><br><br>
                 <% else %>

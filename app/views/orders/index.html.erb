@@ -23,8 +23,10 @@
         <td id= "st<%= order.id %>" ><%= order.status %></td>
         <td><%= order.user.username %></td>
         <td><%= link_to 'Show', order %></td>
+        <% if order.status == "waiting" %>
         <td><button onclick="finish_order(this)" id= <%= order.id %> >Finish</button></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <% end %>
         <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -57,26 +57,39 @@ class GroupMembersController < ApplicationController
   def add
 
     @addMember = User.find_by username: params[:memberName]
-    puts(params[:group_id])
-    puts(@addMember.id)
-    puts("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    # @friends = current_user.friendships
-    # @friends.each do |friend|
-    #   if @addMember.id == friend.friend_id
-        @group = Group.find(params[:group_id])
-        #el mo4kla hena 
-        @group_member = @group.group_members.build(:user_id => @addMember.id,:group_id => params[:group_id] )
-        puts(@group_member.user_id)
-        if @group_member.save
-          @friend = User.find_by id: @group_member.user_id
-          render json: {group_member: @group_member, friend: @friend}
-        else
-          flash[:error] = "Unable to add friend."
-          # redirect_to root_url
-        puts("ssssssssssssssssssssssssssssssssssssssssssssssssss")
-       end
-    # end
-    # render json: {group_member: @group_member}
+    @friends = current_user.friendships
+    @found = 0
+    if @addMember
+      @friends.each do |friend|
+        if @addMember.id == friend.friend_id
+          @found = 1
+          break
+        end
+      end
+      if @found == 1
+        respond_to do |format|
+          puts(@addMember)
+          @group = Group.find(params[:group_id])
+          @group_member = @group.group_members.build(:user_id => @addMember.id,:group_id => params[:group_id] )
+          if @group_member.save
+            @friend = User.find_by id: @group_member.user_id
+            format.json {render json: {group_member: @group_member, friend: @friend}}
+          else
+            flash[:error] = "Unable to add friend."
+            # redirect_to root_url
+            puts("ssssssssssssssssssssssssssssssssssssssssssssssssss")
+          end
+        end
+      else
+        respond_to do |format|
+          format.json { render json: {'NotFriend':"not found"} }
+        end
+      end
+    else
+      respond_to do |format|
+        format.json { render json: {'Alert':"not found"} }
+      end
+    end
   end
 
 

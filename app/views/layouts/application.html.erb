@@ -67,12 +67,17 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <div class="nav navbar-nav">
-          <li class="dropdown">
+          <li class="dropdown" style="width: 300px">
             <button class="dropbtn" style="color:#fff;">Notification</button>
-            <ul class="dropdown-content" id="dropdowncontent">
-              <a href="">fffffffff</a>
-              <a href="">fffffffff</a>
-              <a href="">fffffffff</a>
+            <ul class="dropdown-content" id="dropdowncontent" style="width: 300px">
+              <% @invitations.each do |invite| %>
+                <%= invite.order.user.username %> invited you to his order
+                <% if invite.status == "invited" %>
+                  <button onclick="join(this)" id="<%= invite.id %>">Join</button><br><br>
+                <% else %>
+                  and you joined!<br><br>
+                <% end %>
+              <% end %>
             </ul>
           </li>
           <li><%= link_to  user_path(current_user) , method: :get do%>

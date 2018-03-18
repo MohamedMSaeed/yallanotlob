@@ -1,4 +1,3 @@
-
 function addFriendToList(){
     var friend = $("#add_friend").val()
     $.ajax({

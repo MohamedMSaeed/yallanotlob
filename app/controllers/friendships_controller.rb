@@ -29,10 +29,10 @@ class FriendshipsController < ApplicationController
            @friendship = current_user.friendships.build(:friend_id => user.id)
            respond_to do |format|
               if @friendship.save
-                format.json { render json: { 'id': @friendship.friend_id ,'img': @friendship.friend.image ,'name': @friendship.friend.username} }
+                format.json { render json: { 'id': @friendship.id ,'img': @friendship.friend.image ,'name': @friendship.friend.username} }
               else
                 format.json { render json: {'found': "already friend"}}
-              end
+
              end
            end
         end

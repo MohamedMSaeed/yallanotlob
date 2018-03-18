@@ -12,11 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180318152519) do
 
-  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
@@ -93,8 +88,6 @@ ActiveRecord::Schema.define(version: 20180318152519) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "image"
-    t.string "password_reset_token"
-    t.datetime "password_reset_sent_at"
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -9,15 +9,18 @@
         <th>Amount</th>
         <th>Price</th>
         <th>Comment</th>
+<th>Delete</th>
       </tr>
     </thead>
  <tbody id="orders">
     <% @order.order_details.each do |o| %>
       <tr>
+
         <td><%= o.item %></td>
         <td><%= o.amount %></td>
         <td><%= o.price %></td>
         <td><%= o.comment %></td>
+<td>    <%= link_to 'Destroy', o, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_od' %> </td>
       </tr>
     <% end %>
   </tbody>

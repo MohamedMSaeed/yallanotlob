@@ -2,11 +2,13 @@ class OrderDetailsController < ApplicationController
 
   def destroy
  @order_detail = OrderDetail.find(params[:id])
-    @order_detail.destroy
-    respond_to do |format|
-      format.html { redirect_to root_url, notice: 'your order was successfully destroyed.' }
-      format.json { head :no_content }
+    if @order_detail.destroy
+    flash[:notice] = "deleted your order."
+      
+    else
+      flash[:error] = "Unable to delete order."
     end
+render json: {msg:"msg"}
   end
 
   def create

@@ -364,12 +364,12 @@ table tr td
 .dropbtn{
     background-color: #272424;
     color: grey;
-    padding: 16px;
+    /*padding: 16px;*/
     font-size: 15px;
     border: none;
 }
 .dropdown{
-    position: relative;
+    position: absolute;
     display: inline-block;
     visibility: visible;
     opacity: unset;
@@ -390,9 +390,9 @@ table tr td
 /* Links inside the dropdown */
 .dropdown-content a{
     color: black;
-    padding: 12px 6px;
+    /*padding: 12px 6px;*/
     text-decoration: none;
-    display: block;
+    /*display: block;*/
 }
 .dropdown-content a:hover{background-color: #ddd}
 

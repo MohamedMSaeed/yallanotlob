@@ -59,4 +59,12 @@ class InvitedToOrdersController < ApplicationController
     end
   end
 
+  def join
+    @invitation = InvitedToOrder.where(id: params[:invite_id])
+    if @invitation.update(status: 'joined')
+      respond_to do |format|
+        format.json { render json: {'joined':"done", 'iid':@invitation} }
+      end
+    end
+  end
 end

@@ -1,78 +1,48 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Groups</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th>GID</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><p onclick ="displayGpMember(this)" class='grpName' gid="<%= group.id %>"><%= group.name %><p> &nbsp;&nbsp;&nbsp; </td>
-        <td><%= group.user.username %>&nbsp;&nbsp;&nbsp;</td>
-        <td><%= group.id %>&nbsp;&nbsp;&nbsp;</td>
-        <td><%= link_to 'Show', group %>&nbsp;&nbsp;&nbsp;</td>
-        <td><%= link_to 'Edit', edit_group_path(group) %>&nbsp;&nbsp;&nbsp;</td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<div >
-  <table>
-    <tbody>
-     <% @groups.each do |group| %>
-    <tr>
-        <td >
-          <input type="text" id="membername" class='grpName' gid="<%= group.id %>">
-        </td>
-        <td>
-            <button id="add" onclick="addMember(this)" >Add</button>
-        </td>
-      </tr>
-     <tr id="group">
-      <!-- h3mel append ll group members -->
-      </tr>
-       <% end %>
-    </tbody>
-  </table>
+<div>
+  <div class="center-block center">
+    <div>
+      <input type="text" id="add_group" style="width: 50%; background: white; border: black solid" >
+      <button id="add" onclick="addGroup(this)" >New Group </button>
+    </div>
+  </div><br><br>
 </div>
 
-
-
-<div  id="display_group" >
+<div class="container">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <legend style="background-color: white">Friend List</legend>
-      <fieldset style="height: 330px; background-color: white; padding-top: 10px">
-        <div  id="frindlist">
-          <% @friendships.each do |friendship| %>
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-              <%= image_tag(friendship.friend.image.thumb.url, alt: 'Image') if friendship.friend.image? %>
-              <%= friendship.friend.username%>
-              <%= link_to 'Unfriend', friendship, method: :delete, :onclick =>'RemoveFriend()'%>
-              <br /><br /><br />
-            </div>
+    <div class="col-md-4" style="border: solid black; height: 350px; overflow-y: scroll">
+      <table class=" ">
+        <col width="150">
+        <tbody id="groupTable">
+          <% @groups.each do |group| %>
+            <tr style="height: 40px" >
+              <td><p style="display:inline" onclick ="displayGpMember(this)" class='grpName' gid="<%= group.id %>"><%= group.name %></p></td>
+              <td><% group.user.id %></td>
+              <td><% group.id %></td>
+              <td><% link_to 'Show', group %></td>
+              <td><%= link_to 'Edit', edit_group_path(group) %></td>
+              <td><%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="fa fa-times-circle"></i>
+                <% end %></td>
+            </tr>
           <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-6" style="border: solid black; height: 350px; overflow-y: scroll; float: right">
+      <div  id="display_group" >
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <legend >Friend List</legend>
+            <fieldset style="height: 330px; padding-top: 10px">
+              <div  id="frindlist">
+              </div>
+            </fieldset>
+          </div>
         </div>
-      </fieldset>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-<br>
-
-<%= link_to 'New Group', new_group_path %>
-
-

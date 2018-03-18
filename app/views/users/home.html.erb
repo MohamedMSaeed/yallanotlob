@@ -19,7 +19,7 @@
         <hr>
         <ul style="height: 250px; font-size: 15px">
         <% @orders.each do |order| %>
-          <li style="font-size: 15px"><%= link_to order.meal, order_path(order)  %> created at: <%= order.created_at %></li>
+          <li style="font-size: 15px"><%= link_to order.meal, order_path(order)  %> created <%= time_ago_in_words(order.created_at) %></li>
         <% end %>
         </ul>
 

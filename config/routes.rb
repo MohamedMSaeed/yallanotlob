@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :group_members
       get "group_members/:id", to: "group_members#add_friend" 
   resources :users
-  # authenticated :user do
+  authenticated :user do
     root to: 'users#home', as: :authenticated_root
-  # end
+  end
   root to: "start#start"
   get "start/home", to: "start#home"
   post "invited_to_orders/invite", to: "invited_to_orders#invite"
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post "invited_to_orders/inviteGroup", to: "invited_to_orders#inviteGroup"
   post "/orders/putList", to: "orders#putList"
   post "/orders/finish", to: "orders#finish"
+  post "/groups/newGroup", to: "groups#newGroup"
   # post "/user/home", to: "user#home"
 
   resources :order_details

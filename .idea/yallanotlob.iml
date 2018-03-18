@@ -80,7 +80,6 @@
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.8.2, RVM: ruby-2.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="oauth2 (v1.4.0, RVM: ruby-2.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="omniauth (v1.8.1, RVM: ruby-2.4.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="omniauth-facebook (v4.0.0, RVM: ruby-2.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="omniauth-oauth2 (v1.5.0, RVM: ruby-2.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, RVM: ruby-2.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v3.0.2, RVM: ruby-2.4.1) [gem]" level="application" />

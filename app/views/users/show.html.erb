@@ -10,13 +10,12 @@
   <strong> <font size="18px;"> <%= @user.username %> </font></strong>
 </p>
 
-
 <div>
    <div class="row">
       <div class="col-md-10 col-md-offset-1">
       <fieldset style="height: 330px; background-color: white; padding-top: 10px">
       <legend  style="background-color: white"><h2>My friends:                                          
-      </h2> </legend>
+        <p><font size="5px;"><%= link_to "Add new friends", users_path %> </font></p></h2> </legend>
 
         <% for friendship in @user.friendships %>
             <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -32,11 +31,9 @@
     </div>
   </div>
 </div>
-  <br />
-  <br />
-  <%= link_to "Add new friends", users_path %>
-  <br />
-  <br />
+
+<br />
+<br />
 <div>
    <div class="row">
       <div class="col-md-10 col-md-offset-1">

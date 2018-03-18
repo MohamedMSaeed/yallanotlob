@@ -18,12 +18,12 @@
       <div class="col-md-10 col-md-offset-1">
   <fieldset>
   <legend>Friend List</legend>
-  <div  id="frindlist">
+  <div  id="friendlist">
     <% @friendships.each do |friendship| %>
         <div class="col-lg-4 col-sm-6 portfolio-item">
         <%= image_tag(friendship.friend.image.thumb.url, alt: 'Image') if friendship.friend.image? %>
         <%= friendship.friend.username%>
-       <p id="my-link"> <%= link_to 'Unfriend', friendship, method: :delete, data: { confirm: 'Are you sure?' } %><p>
+        <%= link_to 'Unfriend', friendship, method: :delete, data: { confirm: 'Are you sure?' } ,:remote =>true , :class => 'my-link' %>
           <br />
           <br />
           <br />

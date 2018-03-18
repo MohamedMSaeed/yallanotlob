@@ -11,10 +11,11 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = current_user.friendships.find(params[:id])
+    @friendship = Friendship.find(params[:id])
     @friendship.destroy
     # flash[:notice] = "Removed friendship."
     # redirect_to friendships_path
+    render json: {msg:" friend removed"}
   end
 
     def index
@@ -28,7 +29,7 @@ class FriendshipsController < ApplicationController
            respond_to do |format|
               if @friendship.save
                 format.json { render json: { 'id': @friendship.id ,'img': @friendship.friend.image ,'name': @friendship.friend.username} }
-              end
+              end              
             end
         end
       end

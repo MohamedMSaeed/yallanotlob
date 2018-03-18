@@ -61,11 +61,12 @@ function addMember (event){
             memberName : member,group_id : gId, authenticity_token:$('meta[name="csrf-token"]').attr("content")
         },
         success:function (res) {
-            console.log(res['friend'])
-            $("#frindlist").append('<div class="col-lg-4 col-sm-6 portfolio-item">'
-                +'<img src=../../'+res['friend'].image.thumb.url+'/>'
-                +' '+res['friend'].username
-                +'<a onclick=removeMember(this) class="delMember" mid="'+res['friend'].id+'" gid="'+gId+'" >Remove</a>'+'<br /><br /><br /></div>')
+            if(res['friend']) {
+                $("#frindlist").append('<div class="col-lg-4 col-sm-6 portfolio-item">'
+                    + '<img src=../../' + res['friend'].image.thumb.url + '/>'
+                    + ' ' + res['friend'].username
+                    + '<a onclick=removeMember(this) class="delMember" mid="' + res['friend'].id + '" gid="' + gId + '" >Remove</a>' + '<br /><br /><br /></div>')
+            }
         }
     })
 }

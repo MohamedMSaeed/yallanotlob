@@ -18,11 +18,11 @@
           <% @groups.each do |group| %>
             <tr style="height: 40px" >
               <td><p style="display:inline" onclick ="displayGpMember(this)" class='grpName' gid="<%= group.id %>"><%= group.name %></p></td>
-              <td><% group.user.id %></td>
-              <td><% group.id %></td>
-              <td><% link_to 'Show', group %></td>
+              <!-- <td><% group.user.id %></td> -->
+              <!-- <td><% group.id %></td> -->
+              <!-- <td><% link_to 'Show', group %></td> -->
               <td><%= link_to 'Edit', edit_group_path(group) %></td>
-              <td><%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <td><%= link_to group, method: :delete ,data: { confirm: 'Are you sure?' } ,:remote =>true, :class => 'gp-link'  do %>
                   <i class="fa fa-times-circle"></i>
                 <% end %></td>
             </tr>

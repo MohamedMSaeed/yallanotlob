@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180318152519) do
 
-
   create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "friend_id"

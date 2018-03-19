@@ -46,7 +46,7 @@
 </div>
  <button onclick="showInvited(this)" class="invite" uid="<%= current_user.id %>" oid="<%= params[:id] %>" > show invited friends to this order</button>
 <button onclick="showJoined(this)" class="join" uid="<%= current_user.id %>" oid="<%= params[:id] %>" > show joined friends to this order</button>
-
+<button onclick="hideMe()">hide</button>
 <h5>invited:</h5>
 <div id="invited">
 </div>

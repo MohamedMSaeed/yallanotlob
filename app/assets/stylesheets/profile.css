@@ -1,0 +1,25 @@
+.linky{
+position:absolute;
+left:1250px;
+top:60px;
+font-size:16px;
+font-weight: bold;
+background-color:#3377ba;
+padding:5px 10px 5px 10px;
+border-radius:5px;
+opacity: 0.5;
+}
+
+.add_link{
+position:absolute;
+top:60px;
+font-size:16px;
+font-weight: bold;
+background-color:#3377ba;
+padding:5px 10px 5px 10px;
+border-radius:5px;
+left:145px; top:200px;
+padding-top:10px;
+padding-bottom:10px;
+opacity:1;
+}

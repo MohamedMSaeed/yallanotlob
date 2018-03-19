@@ -6,6 +6,7 @@ function addFriendToList(){
         data: { friend_email:friend, authenticity_token:$('meta[name="csrf-token"]').attr("content")},
         dataType: "json",
         success: function (response) {
+            $("#add_friend").val("")
             if (response['found']){
                 alert("Already Friend")
             }else {

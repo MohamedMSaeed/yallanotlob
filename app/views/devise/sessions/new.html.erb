@@ -39,7 +39,10 @@
                 </div>
                 <hr>
                 <p class="blue">Sign in with</p>
-                <p><i class="fa fa-facebook-f fa-lg"></i><i class="fa fa-twitter fa-lg"></i></p>
+                <!--  -->
+                      <p><i class="fa fa-facebook fa-lg"></i><%= link_to "acebook", user_facebook_omniauth_authorize_path, {:style=>'color:#337aba;font-size:16px;font-weight: bold;', :class => 'link'} %></p>
+                  <!-- <i class="fa fa-google fa-lg"></i> -->
+                      <p><i class="fa fa-google fa-lg"></i><%= link_to "oogle", user_google_oauth2_omniauth_authorize_path , {:style=>'color: #337aba; font-size:16px;font-weight: bold;',:class => 'link'} %></p>
                 <hr>
                 <%= render "devise/shared/links" %>
               <% end %>

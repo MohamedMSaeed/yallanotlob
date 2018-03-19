@@ -32,3 +32,4 @@ Rails.application.config.assets.precompile += %w( home.js )
 
 Rails.application.config.assets.precompile += %w( addOrder.js )
 
+Rails.application.config.assets.precompile += %w( profile.css )

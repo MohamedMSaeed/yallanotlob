@@ -85,7 +85,7 @@ function addGroup (event){
             console.log(res)
             $("#add_group").val(" ")
             $("#groupTable").append('<tr><td><p style="display:inline" onclick ="displayGpMember(this)" class="grpName" gid="'+res['group'].id+'">'+res['group'].name+'</p></td>'
-            +'<td><a href="/groups/'+res['group'].id+'">Edit</a></td>'
+            +'<td><a href="/groups/'+res['group'].id+'/edit'+'">Edit</a></td>'
             +'<td><a data-confirm="Are you sure?" class="gp-link" data-remote="true" rel="nofollow" data-method="delete" href="/groups/'+res['group'].id+'">'
             +'    <i class="fa fa-times-circle"></i></a></td></tr>'
             )

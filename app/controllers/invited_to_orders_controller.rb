@@ -26,7 +26,30 @@ class InvitedToOrdersController < ApplicationController
       end
     end
   end
+def showInvited
+        @invited_to_order=InvitedToOrder.where(order_id: params[:order_id])
+        @invited_to_orders= []
+        @invited_to_order.each do |inv|
+        if inv.status == 'invited'
+        friend = User.where(id: inv.user_id)
+        @invited_to_orders.push(friend)
 
+      end
+end
+
+    render json: {friends: @invited_to_orders}
+end
+def showJoined
+        @invited_to_order=InvitedToOrder.where(order_id: params[:order_id])
+        @friends= []
+        @invited_to_order.each do |inv|
+        if inv.status == 'joined'
+        friend = User.where(id: inv.user_id)
+        @friends.push(friend);
+      end
+end
+    render json: {friends: @friends}
+end
   def inviteGroup
     @groups = current_user.groups
     @inputgroup = Group.find_by name: params[:groupName]

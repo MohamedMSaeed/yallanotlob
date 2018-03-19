@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   post "/group_members/add", to: "group_members#add"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
+  get "invited_to_orders/showInvited", to: "invited_to_orders#showInvited"
+  get "invited_to_orders/showJoined", to: "invited_to_orders#showJoined"
 end

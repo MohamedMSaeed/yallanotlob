@@ -73,7 +73,11 @@
               <% @invitations.each do |invite| %>
                 <%= invite.order.user.username %> invited you to his <%= link_to 'Order', order_path(invite.order) %>
                 <% if invite.status == "invited" %>
-                  <button onclick="join(this)" id="<%= invite.id %>">Join</button><br><br>
+                  <% if invite.order.status == "waiting" %>
+                    <button onclick="join(this)" id="<%= invite.id %>">Join</button><br><br>
+                  <% else %>
+                    and he finished it :D <br><br>
+                  <% end %>
                 <% else %>
                   and you joined!<br><br>
                 <% end %>

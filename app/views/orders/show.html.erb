@@ -37,7 +37,9 @@
         <td><input type="text" placeholder='comment' id="comment"></td>
         <% if @order.status == "waiting" %>
           <td><button onclick="add(this)" class="addOrder" uid="<%= current_user.id %>" oid="<%= params[:id] %>" > Add Order</button></td>
-         <% end%>
+        <% else%>
+          <td>Finished</td>
+        <% end%>
 
 </tr>
     </table>

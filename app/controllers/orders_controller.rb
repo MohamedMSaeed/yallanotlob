@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
       if @order.save
         friendsList.each do |f|
           @invited = InvitedToOrder.new(order_id: @order.id, user_id: f, status: "invited" )
-          ActionCable.server.broadcast "order_#{f}_channel" , {order:@order, createdby:@user}
+          ActionCable.server.broadcast "order_#{f}_channel" , {order:@order, createdby:@user, invitation:@invited}
           @invited.save
         end
 

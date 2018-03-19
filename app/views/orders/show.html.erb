@@ -20,8 +20,10 @@
         <td><%= o.amount %></td>
         <td><%= o.price %></td>
         <td><%= o.comment %></td>
+        <% if @order.status == "waiting" %>
 <td>    <%= link_to 'Destroy', o, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_od' %> </td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
   </table>
@@ -33,11 +35,24 @@
         <td><input type="number" placeholder='amount' id="amount"></td>
       	<td><input type="number" placeholder='price' id="price"></td>
         <td><input type="text" placeholder='comment' id="comment"></td>
-        <td><button onclick="add(this)" class="addOrder" uid="<%= current_user.id %>" oid="<%= params[:id] %>" > Add Order</button></td>
+        <% if @order.status == "waiting" %>
+          <td><button onclick="add(this)" class="addOrder" uid="<%= current_user.id %>" oid="<%= params[:id] %>" > Add Order</button></td>
+         <% end%>
+
 </tr>
     </table>
 
 
 </div>
+ <button onclick="showInvited(this)" class="invite" uid="<%= current_user.id %>" oid="<%= params[:id] %>" > show invited friends to this order</button>
+<button onclick="showJoined(this)" class="join" uid="<%= current_user.id %>" oid="<%= params[:id] %>" > show joined friends to this order</button>
 
+<h5>invited:</h5>
+<div id="invited">
+</div>
+<hr>
+
+<h5>joined:</h5>
+<div id="joined">
+</div>
 </div>

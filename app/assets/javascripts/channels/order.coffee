@@ -11,5 +11,5 @@ App.order = App.cable.subscriptions.create "OrderChannel",
     # Called when there's incoming data con the websocket for this channel
     console.log(data['order'])
     console.log(data['createdby'])
-    $("#friends_activities").append('<p>hi</p>')
+    $("#dropdowncontent").append('')
 

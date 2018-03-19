@@ -10,7 +10,11 @@ class ApplicationController < ActionController::Base
 
 
   def notification
-    # @invitations = InvitedToOrder.where(user_id: current_user.id).order("created_at DESC").limit(10)
+
+    if current_user
+      @invitations = InvitedToOrder.where(user_id: current_user.id).order("created_at DESC").limit(10)
+    end
+
   end
 
 protected

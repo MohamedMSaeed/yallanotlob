@@ -1,21 +1,24 @@
+
 <p id="notice"><%= notice %></p>
 
 <!-- <p>Image: </p> -->
 <p>
   <%= image_tag(@user.image.thumb.url, alt: 'Image') if @user.image? %>
+  <%= link_to 'Edit profile', edit_user_path(@user) ,{:class => 'linky' ,:style => 'color:white;' }%> 
+  <%= link_to "Add friend", users_path ,{:class => 'add_link' , :style => 'color:white;'}%>
 </p>
 
 <p>
   <!-- <strong>Username:</strong> -->
-  <strong> <font size="18px;"> <%= @user.username %> </font></strong>
+  <strong> <font size="18px;" color="#777777"> <%= @user.username %> </font></strong>
 </p>
 
 <div>
    <div class="row">
       <div class="col-md-10 col-md-offset-1">
-      <fieldset style="height: 330px; background-color: white; padding-top: 10px">
-      <legend  style="background-color: white"><h2>My friends:                                          
-        <p><font size="5px;"><%= link_to "Add new friends", users_path %> </font></p></h2> </legend>
+      <fieldset style="height: 330px; background-color: white; ">
+      <legend  style="background-color: white;border-color: #00ccFF;"><h2>                                          
+        <p><font size="6px;" color="#3377ba"> <i class="fa fa-users"></i>Friends:</font></p></h2> </legend>
 
         <% for friendship in @user.friendships %>
             <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -34,7 +37,7 @@
 
 <br />
 <br />
-<div>
+<!-- <div>
    <div class="row">
       <div class="col-md-10 col-md-offset-1">
       <fieldset style="height: 330px; background-color: white; padding-top: 10px">
@@ -51,8 +54,8 @@
       </fieldset>
     </div>
   </div>
-</div>
-  <br />
+</div> -->
+<!--   <br />
   <br />
 <h2>groups</h2>
  <br>
@@ -94,8 +97,10 @@
       </div>
     </div>
   <% end %>
-</div>
+</div> -->
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p style="font-size: 22px;"><i class="fa fa-backward" aria-hidden="true"></i><%= link_to 'Back', users_path ,{:style => 'color: #3377ba;'} %></p>
+<%= stylesheet_link_tag "profile" %>
+<%= javascript_include_tag "jquery" %>
+

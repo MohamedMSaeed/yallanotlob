@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
         request.env['omniauth.origin'] || root_path
     end
 
+
   def notification
-    @invitations = InvitedToOrder.where(user_id: current_user.id).order("created_at DESC").limit(10)
+    # @invitations = InvitedToOrder.where(user_id: current_user.id).order("created_at DESC").limit(10)
   end
 
 protected

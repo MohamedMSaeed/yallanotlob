@@ -61,6 +61,7 @@ function addMember (event){
             memberName : member,group_id : gId, authenticity_token:$('meta[name="csrf-token"]').attr("content")
         },
         success:function (res) {
+            $("#membername").val("")
             if(res['friend']) {
                 $("#frindlist").append('<div class="col-lg-4 col-sm-6 portfolio-item">'
                     + '<img src=../../' + res['friend'].image.thumb.url + '/>'

@@ -65,3 +65,7 @@ $("#joined").html("")
 		}
 	});
 }
+function hideMe(event){
+$("#invited div").fadeOut();
+$("#joined div").fadeOut();
+}

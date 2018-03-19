@@ -8,6 +8,7 @@ function finish_order(event){
         success: function (response) {
             if(response['status']){
                 $("#st"+response['order_id'])[0].innerHTML = "finished"
+                $("#"+response['order_id']).parent().next('td').remove()
                 $("#"+response['order_id'])[0].remove()
             }
         }

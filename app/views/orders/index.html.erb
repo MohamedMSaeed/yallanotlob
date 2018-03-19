@@ -5,19 +5,19 @@
 <table>
   <thead>
     <tr>
-      <th>Meal</th>
-      <th>Resturant</th>
+      <th width="100px">Meal</th>
+      <th width="100px">Resturant</th>
       <!--<th>Image</th>-->
-      <th>Status</th>
+      <th width="100px">Status</th>
       <!--<th>User</th>-->
-      <th colspan="4">Action</th>
+      <th colspan="4" width="200px">Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.meal %></td>
+        <td ><%= order.meal %></td>
         <td><%= order.resturant %></td>
         <!--<td><%= order.image %></td>-->
         <td id= "st<%= order.id %>" ><%= order.status %></td>

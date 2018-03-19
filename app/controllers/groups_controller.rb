@@ -57,7 +57,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+        format.html { redirect_to '/groups', notice: 'Group was successfully updated.' }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit }
@@ -70,10 +70,11 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group.destroy
-    respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # respond_to do |format|
+      # format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      # format.json { head :no_content }
+      render json: {msg: 'Group was successfully destroyed'}
+    # end
   end
 
   private

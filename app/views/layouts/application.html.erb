@@ -58,13 +58,27 @@
           <% end %>
         </li>
 <li class="panel-body hidden" id="messages">
+
+<!-- notification -->
+
+<!-- end of notification -->
     
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <div class="nav navbar-nav">
-          <li>
-              <button class="nav btn-toolbar"><i class="fa fa-bell"></i> notification</button>
+          <li class="dropdown" style="width: 300px">
+            <button class="dropbtn" style="color:#fff;">Notification</button>
+            <ul class="dropdown-content" id="dropdowncontent" style="width: 300px">
+              <% @invitations.each do |invite| %>
+                <%= invite.order.user.username %> invited you to his <%= link_to 'Order', order_path(invite.order) %>
+                <% if invite.status == "invited" %>
+                  <button onclick="join(this)" id="<%= invite.id %>">Join</button><br><br>
+                <% else %>
+                  and you joined!<br><br>
+                <% end %>
+              <% end %>
+            </ul>
           </li>
           <li><%= link_to  user_path(current_user) , method: :get do%>
               <i class="glyphicon glyphicon-user"></i> <%= current_user.username  %>

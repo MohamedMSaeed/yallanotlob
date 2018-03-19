@@ -10,22 +10,23 @@
 <div  id="friends_list" >
    <div class="row">
       <div class="col-md-10 col-md-offset-1">
-        <legend style="background-color: white">Friend List</legend>
-        <fieldset style="height: 330px; background-color: white; padding-top: 10px">
-          <div  id="frindlist">
-            <% @friendships.each do |friendship| %>
-              <div class="col-lg-4 col-sm-6 portfolio-item">
-                <%= image_tag(friendship.friend.image.thumb.url, alt: 'Image') if friendship.friend.image? %>
-                <%= friendship.friend.username%>
-                <%= link_to 'Unfriend', friendship, method: :delete, :onclick =>'RemoveFriend()'%>
-                <br /><br /><br />
-              </div>
-            <% end %>
-          </div>
-        </fieldset>
+      <fieldset style="height: 330px; background-color: white; padding-top: 10px">
+      <legend  style="background-color: white">Friend List</legend>
+        <div  id="friendlist">
+          <% @friendships.each do |friendship| %>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+              <%= image_tag(friendship.friend.image.thumb.url, alt: 'Image') if friendship.friend.image? %>
+              <%= friendship.friend.username%>
+              <%= link_to 'Unfriend', friendship, method: :delete, data: { confirm: 'Are you sure?' } ,:remote =>true , :class => 'my-link' %>
+              <br />
+              <br />
+              <br />
+            </div>
+          <% end %>
       </div>
-   </div>
-
+      </fieldset>
+</div>
+</div>
 </div>
 
 <%= javascript_include_tag('add_friend_to_list.js') %>

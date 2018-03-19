@@ -61,11 +61,12 @@ function addMember (event){
             memberName : member,group_id : gId, authenticity_token:$('meta[name="csrf-token"]').attr("content")
         },
         success:function (res) {
-            console.log(res['friend'])
-            $("#frindlist").append('<div class="col-lg-4 col-sm-6 portfolio-item">'
-                +'<img src=../../'+res['friend'].image.thumb.url+'/>'
-                +' '+res['friend'].username
-                +'<a onclick=removeMember(this) class="delMember" mid="'+res['friend'].id+'" gid="'+gId+'" >Remove</a>'+'<br /><br /><br /></div>')
+            if(res['friend']) {
+                $("#frindlist").append('<div class="col-lg-4 col-sm-6 portfolio-item">'
+                    + '<img src=../../' + res['friend'].image.thumb.url + '/>'
+                    + ' ' + res['friend'].username
+                    + '<a onclick=removeMember(this) class="delMember" mid="' + res['friend'].id + '" gid="' + gId + '" >Remove</a>' + '<br /><br /><br /></div>')
+            }
         }
     })
 }
@@ -81,10 +82,16 @@ function addGroup (event){
         },
         success:function (res) {
             console.log(res)
+            $("#add_group").val(" ")
             $("#groupTable").append('<tr><td><p style="display:inline" onclick ="displayGpMember(this)" class="grpName" gid="'+res['group'].id+'">'+res['group'].name+'</p></td>'
             +'<td><a href="/groups/'+res['group'].id+'">Edit</a></td>'
-            +'<td></td></tr>'
+            +'<td><a data-confirm="Are you sure?" class="gp-link" data-remote="true" rel="nofollow" data-method="delete" href="/groups/'+res['group'].id+'">'
+            +'    <i class="fa fa-times-circle"></i></a></td></tr>'
             )
+              $(".gp-link").bind('ajax:success', function () {
+                $(this).parent().closest('tr').remove();
+                })
         }
     })
 }
+$(".gp-link").bind('ajax:success',function(){$(this).parent().closest('tr').remove();})

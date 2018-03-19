@@ -375,7 +375,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     }
     .dropdown {
         position: absolute;
-        right: -50%;
+        /*right: -50%;*/
         top: 0;
         background-color: #6195FF;
         width: 200px;

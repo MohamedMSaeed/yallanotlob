@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   post "friendships/add_friend", to: "friendships#add_friend"
   post "invited_to_orders/inviteGroup", to: "invited_to_orders#inviteGroup"
+  post "invited_to_orders/join", to: "invited_to_orders#join"
   post "/orders/putList", to: "orders#putList"
   post "/orders/finish", to: "orders#finish"
   post "/groups/newGroup", to: "groups#newGroup"

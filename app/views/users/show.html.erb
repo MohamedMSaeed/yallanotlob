@@ -12,7 +12,7 @@
   <!-- <strong>Username:</strong> -->
   <strong> <font size="18px;" color="#777777"> <%= @user.username %> </font></strong>
 </p>
-
+<br><br><br><br><br><br>
 <div>
    <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -100,7 +100,7 @@
 </div> -->
 
 
-<p style="font-size: 22px;"><i class="fa fa-backward" aria-hidden="true"></i><%= link_to 'Back', users_path ,{:style => 'color: #3377ba;'} %></p>
+<p style="font-size: 22px;"><i class="fa fa-backward" aria-hidden="true"></i><%= link_to 'Back', users_path ,{:style => 'color: #3377ba;' , :class => "back"} %></p>
 <%= stylesheet_link_tag "profile" %>
 <%= javascript_include_tag "jquery" %>
 

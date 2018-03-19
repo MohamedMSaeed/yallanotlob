@@ -3,7 +3,7 @@
   <head>
     <title>Yallanotlob</title>
     <%= csrf_meta_tags %>
-<%= action_cable_meta_tag %>
+    <%= action_cable_meta_tag %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,7 @@
 
   <!--  Main navigation  -->
   <!--<div style="color: #0b0b0b">-->
-  <nav id="nav" class="navbar nav-transparent">
+  <nav id="nav" class="navbar nav-transparent"  style="font-size:60px;">
     <div class="container">
     <ul class="main-nav nav navbar-nav navbar-right">
     </ul>
@@ -41,7 +41,7 @@
       <a class="navbar-brand" href="/">YalaNotlob</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+      <li><a href="/" style="color:#3377ba;"><i class="glyphicon glyphicon-home"></i> Home</a></li>
     </ul>
     <% if current_user %>
       <ul class="nav navbar-nav">
@@ -68,7 +68,7 @@
       <ul class="nav navbar-nav navbar-right">
         <div class="nav navbar-nav">
           <li class="dropdown" style="width: 300px">
-            <button class="dropbtn" style="color:#fff;">Notification</button>
+            <button class="dropbtn" style="color:#3377ba;"><i class="glyphicon glyphicon-bell"></i>Notification</button>
             <ul class="dropdown-content" id="dropdowncontent" style="width: 300px">
    <!-- fe code notification hena-->
               <% @invitations.each do |invite| %>
@@ -82,7 +82,10 @@
             </ul>
           </li>
           <li><%= link_to  user_path(current_user) , method: :get do%>
-              <i class="glyphicon glyphicon-user"></i> <%= current_user.username  %>
+              <!-- <i class="glyphicon glyphicon-user"></i> -->
+              <div class = "style_user"> <%= image_tag(current_user.image.small_thumb.url, alt: 'Image') if current_user.image?%>
+               <%= current_user.username %>
+             </div>
             <% end %>
           </li>
           <li><%= link_to  destroy_user_session_path , method: :delete do%>

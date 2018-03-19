@@ -370,12 +370,19 @@ table tr td
 
 
 .dropbtn{
-    background-color: #272424;
-    color: grey;
+    background-color: transparent;
     /*padding: 16px;*/
     font-size: 15px;
     border: none;
 }
+.dropbtn:hover{
+  border:none;
+  outline:none;
+  text-decoration:none;
+  color:inherit;
+  background-color: transparent;
+}
+
 .dropdown{
     position: absolute;
     display: inline-block;
@@ -413,3 +420,12 @@ table tr td
 .dropdown:hover .dropbtn{
     background-color: #272424;
 }
+
+.style_user
+{
+    position: relative;
+    bottom: 8px;
+}
+
+
+

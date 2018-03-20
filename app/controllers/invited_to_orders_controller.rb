@@ -1,4 +1,5 @@
 class InvitedToOrdersController < ApplicationController
+  before_action :authenticate_user!
   def invite
     @friends = current_user.friendships
     @inputfriend = User.find_by username: params[:friendName]

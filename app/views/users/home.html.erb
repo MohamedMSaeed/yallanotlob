@@ -19,7 +19,7 @@
         <hr>
         <ul style="height: 250px; font-size: 15px">
         <% @orders.each do |order| %>
-          <li style="font-size: 15px"><%= link_to order.meal, order_path(order)  %> created <%= time_ago_in_words(order.created_at) %></li>
+          <li style="font-size: 15px"><%= link_to order.meal, order_path(order)  %> created <%= time_ago_in_words(order.created_at) %> ago</li>
         <% end %>
         </ul>
 
@@ -35,7 +35,7 @@
         <ul>
 
         <% @invited.each do |event| %>
-            <li style="font-size: 15px"><%= link_to event.order.user.username, user_path(event.order.user) %> invited you to <%= link_to 'order', order_url(event.order) %> from <%=	 event.order.resturant %><br></li>
+            <li style="font-size: 15px"><%=  event.order.user.username %> invited you to <%= link_to 'order', order_url(event.order) %> from <%=	 event.order.resturant %><br></li>
         <%	 end %>
 
         </ul>

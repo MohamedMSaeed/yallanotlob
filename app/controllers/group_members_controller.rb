@@ -1,5 +1,5 @@
 class GroupMembersController < ApplicationController
-
+  before_action :authenticate_user!
   def destroy
 # @group = Group.find(params[:group_id])
     

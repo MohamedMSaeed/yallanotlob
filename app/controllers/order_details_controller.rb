@@ -1,5 +1,5 @@
 class OrderDetailsController < ApplicationController
-
+  before_action :authenticate_user!
   def destroy
  @order_detail = OrderDetail.find(params[:id])
     if @order_detail.destroy

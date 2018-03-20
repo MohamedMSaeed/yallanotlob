@@ -5,7 +5,7 @@
 <p>
   <%= image_tag(@user.image.thumb.url, alt: 'Image') if @user.image? %>
   <%= link_to 'Edit profile', edit_user_path(@user) ,{:class => 'linky' ,:style => 'color:white;' }%> 
-  <%= link_to "Add friend", users_path ,{:class => 'add_link' , :style => 'color:white;'}%>
+  <%= link_to "Add friend", friendships_path(current_user) ,{:class => 'add_link' , :style => 'color:white;'}%>
 </p>
 
 <p>

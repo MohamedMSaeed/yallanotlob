@@ -2,6 +2,7 @@
 
 <h1>Users</h1>
 
+<div class="col-md-10 col-md-offset-1">
 <table >
   <col width="130">
   <col width="180">
@@ -18,7 +19,7 @@
       <tr>
         <td><%= image_tag(user.image.thumb.url, alt: 'Image') if user.image? %></td>
         <td><%= user.username %></td>
-        <td><%= user.id %></td>
+        <!-- <td><%= user.id %></td> -->
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,16 +28,9 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 
 <%= link_to 'New User', new_user_path %>
 
-<style type="text/css">
-td{
-  padding: 20px;
-}
-
-
-</style>
+<%= stylesheet_link_tag "orders" %>

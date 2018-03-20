@@ -1,5 +1,5 @@
 <h1>Orders</h1>
-<%= link_to 'New Order', new_order_path, class: "btn btn-default" %>
+<%= link_to 'New Order', new_order_path, class: "btn btn-default add" ,:style => 'color: white; position:relative; left:600px; bottom:50px;'%>
 <table>
   <thead>
     <tr>
@@ -35,3 +35,4 @@
 
 
 <%= javascript_include_tag('channels/orders.js') %>
+<%= stylesheet_link_tag "add_friend" %>

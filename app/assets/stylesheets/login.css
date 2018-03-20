@@ -1,4 +1,4 @@
-.link:hover {
+.link:hover ,.btn:hover{
   border:none;
   outline:none;
   text-decoration:none;

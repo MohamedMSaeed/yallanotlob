@@ -352,13 +352,14 @@ table
 { margin: 10px 0 30px 0;}
 
 table tr th, table tr td
-{ background: #3B3B3B;
-    color: #FFF;
-    padding: 0px 0px;
-    text-align: left;}
+{
+    font-size: 20px;  
+    text-align: center;
+}
 
 table tr td
-{ background: transparent;
+{
+     background: transparent;
     color: #47433F;
     border-top: 1px solid #FFF;}
 

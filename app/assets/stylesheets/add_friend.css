@@ -13,6 +13,13 @@ h1, #friends_list{
 	color: white;
 
 }
+.add:hover{
+	  border:none;
+  outline:none;
+  text-decoration:none;
+  color:inherit;
+  background-color: #3377ba;
+}
 #add{
 	/*margin-top: 50px; */
 	font-size: 22px;

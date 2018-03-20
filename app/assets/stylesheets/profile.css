@@ -9,7 +9,7 @@ padding:5px 10px 5px 10px;
 border-radius:5px;
 opacity: 0.5;
 }
-.linky:hover ,.add_link:hover{
+.linky:hover, .add_link:hover{
   border:none;
   outline:none;
   text-decoration:none;

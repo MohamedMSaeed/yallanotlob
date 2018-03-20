@@ -58,3 +58,9 @@
 <div id="joined">
 </div>
 </div>
+
+
+<div>
+  <h3>Menu: </h3>
+  <%= image_tag(@order.image.thumb.url, alt: 'Image') if @order.image? %>
+</div>
